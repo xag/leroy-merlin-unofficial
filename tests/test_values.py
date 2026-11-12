@@ -106,6 +106,6 @@ def test_a_plywood_board_is_two_materials_one_per_way_it_bends():
     along, across = ms["lm-contreplaque-bouleau-18-along"], ms["lm-contreplaque-bouleau-18-across"]
     assert along.payload["measured_along"] == "face grain, flat"
     assert across.payload["measured_along"] == "across face grain, flat"
-    assert across.payload["same_panel_as"] == along.id
+    assert across.payload["same_panel_as"] == along.id and "same_panel_as" not in along.payload
     # Riga Wood's 18 mm, Table 3.17: EN 310 lower 5% strength 61.7 along, read as characteristic
     assert abs(along.params["design_bending_stress"].value - 61.7 / 2.1) < 1e-9

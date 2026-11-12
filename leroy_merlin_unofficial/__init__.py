@@ -268,7 +268,7 @@ def _panel(line: str, words: str, form: str, docs: list[str], named: bool, key: 
         mid = f"{base}-{tag}" if tag else base
         payload = {"form": form, "measured_along": along, "modulus": modulus, "connector_key": key,
                    "leroy_merlin": {**shop, "values_from": doc}}
-        if tag:
+        if tag and tag != ways[0][1]:
             payload["same_panel_as"] = f"{base}-{ways[0][1]}"
         if not named:
             payload["leroy_merlin"]["unverified"] = ("Leroy Merlin's listing names no maker; these are "
