@@ -1,0 +1,117 @@
+[
+  {
+    "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded",
+    "kind": "decision",
+    "digest": "a5cabe01355c"
+  },
+  {
+    "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded/grounded-proxies",
+    "kind": "alternative",
+    "digest": "dd721cb304a2"
+  },
+  {
+    "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded/no-values-for-unbranded",
+    "kind": "alternative",
+    "digest": "702b3456efb0"
+  },
+  {
+    "path": "a-material-is-one-line-in-one-thickness",
+    "kind": "decision",
+    "digest": "9e413b740240"
+  },
+  {
+    "path": "a-material-is-one-line-in-one-thickness/one-material-per-line",
+    "kind": "alternative",
+    "digest": "a355824339e6"
+  },
+  {
+    "path": "a-true-modulus-without-its-shear",
+    "kind": "debt",
+    "digest": "eedc7ac6ed55"
+  },
+  {
+    "path": "a-true-modulus-without-its-shear/find-a-rolling-shear-modulus",
+    "kind": "discharge",
+    "digest": "a66fdb84fc34"
+  },
+  {
+    "path": "lines-with-no-values",
+    "kind": "debt",
+    "digest": "18bda77d8904"
+  },
+  {
+    "path": "lines-with-no-values/find-what-each-line-is",
+    "kind": "discharge",
+    "digest": "6ffe41c07f51"
+  },
+  {
+    "path": "the-knowledge-is-shared-unchanged-and-improved-only-here",
+    "kind": "decision",
+    "digest": "0e6ec2eea4a7"
+  },
+  {
+    "path": "the-knowledge-is-shared-unchanged-and-improved-only-here/another-licence",
+    "kind": "alternative",
+    "digest": "1599d11cb8c3"
+  },
+  {
+    "path": "the-makers-of-the-unbranded-lines",
+    "kind": "debt",
+    "digest": "744213fc19bf"
+  },
+  {
+    "path": "the-makers-of-the-unbranded-lines/read-the-label-in-the-store",
+    "kind": "discharge",
+    "digest": "2804f473f83d"
+  },
+  {
+    "path": "the-panels-are-data-on-furniture-designs-kinds",
+    "kind": "decision",
+    "digest": "0b17be071606"
+  },
+  {
+    "path": "the-panels-are-data-on-furniture-designs-kinds/in-furniture-design",
+    "kind": "alternative",
+    "digest": "cdbb71d927d5"
+  },
+  {
+    "path": "the-panels-are-data-on-furniture-designs-kinds/in-the-app",
+    "kind": "alternative",
+    "digest": "885d8f6bb1ab"
+  },
+  {
+    "path": "the-range-is-read-from-the-public-sitemap",
+    "kind": "decision",
+    "digest": "0306765b7335"
+  },
+  {
+    "path": "the-range-is-read-from-the-public-sitemap/search-snippets",
+    "kind": "alternative",
+    "digest": "e90eea932c30"
+  },
+  {
+    "path": "the-range-is-read-from-the-public-sitemap/solve-the-captcha",
+    "kind": "alternative",
+    "digest": "41ba5a7f3019"
+  },
+  {
+    "path": "the-values-are-checked-against-a-private-copy",
+    "kind": "decision",
+    "digest": "4a8a840878a0"
+  },
+  {
+    "path": "the-values-are-checked-against-a-private-copy/skip-without-the-copy",
+    "kind": "alternative",
+    "digest": "a05f36c6d4e6"
+  },
+  {
+    "path": "thebaults-sheets-disagree-with-its-declaration",
+    "kind": "debt",
+    "digest": "6c9176022cdd"
+  },
+  {
+    "path": "thebaults-sheets-disagree-with-its-declaration/ask-thebault",
+    "kind": "discharge",
+    "digest": "ead272e6e710"
+  }
+]

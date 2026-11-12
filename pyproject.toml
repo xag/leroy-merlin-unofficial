@@ -1,0 +1,30 @@
+[project]
+name = "leroy-merlin-unofficial"
+version = "0.1.0"
+description = "The wood panels Leroy Merlin France sells, and their makers' published values, as data on furniture-design's kinds. Unofficial: not written or endorsed by Leroy Merlin or the makers."
+requires-python = ">=3.11"
+license = "AGPL-3.0-or-later AND CC-BY-NC-ND-4.0"
+license-files = ["LICENSE", "LICENSE-DATA"]
+dependencies = ["quern", "furniture-design"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["leroy_merlin_unofficial"]
+
+[dependency-groups]
+dev = ["pytest>=8.0.0", "pytest-testmon>=2.1"]
+
+[tool.uv.sources]
+# Pinned by full rev, always, and to the same quern as furniture-design: uv accepts one URL
+# per distribution across a resolution.
+quern = { git = "https://github.com/xag/quern", rev = "07eff6efc0625ee0613a083095db4e6b75be7284" }
+furniture-design = { git = "https://github.com/xag/furniture-design", rev = "a69f1a92f3aa9de29bdf3a9f482b18b7f3117265" }
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+# Fail fast: stop at the first failure, run last time's failures first.
+# First pass `pytest --testmon` (failed and changed tests), then the whole suite with `pytest`.
+addopts = "-x --ff"
