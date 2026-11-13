@@ -1,5 +1,5 @@
 """The wood panels Leroy Merlin France sells, as data on furniture-design's kinds (source,
-clause, material), each line read as a board of wood-panels-unofficial. Unofficial: Leroy Merlin
+clause, material), each line read as a board of wood-panels. Unofficial: Leroy Merlin
 neither wrote nor endorsed it.
 
 What the shop lists comes from its public product sitemap (range.json): every panel product, with
@@ -9,7 +9,7 @@ under sources/leroy-merlin-sitemap. The product pages are behind a captcha and a
 
 A material is one product line in one thickness, under materials/: `lm-<line>-<thickness>`, and
 for plywood and OSB one per way it bends (`-along`/`-across`, `-major`/`-minor`). Its values are
-those of a wood-panels-unofficial material: a class's (particleboard P2 or P3, MDF, OSB/3) for a
+those of a wood-panels material: a class's (particleboard P2 or P3, MDF, OSB/3) for a
 board whose strength is its class's, or a maker's board's. Its payload `leroy_merlin` says what
 the shop sells of it (the products, their sheet sizes, whether it is cut to size) and which
 material its values are. When the listing does not name the class or the maker those values
@@ -19,7 +19,7 @@ naturel, décor; OSB bouleau; hêtre thermo; eucalyptus) has a material with wha
 values, so it judges nothing.
 
     from furniture_design.knowledge import knowledge as general, merge
-    from wood_panels_unofficial import knowledge as wood_panels
+    from wood_panels import knowledge as wood_panels
     from leroy_merlin_unofficial import knowledge as leroy_merlin
     tree.root.children = merge(general(), wood_panels(), leroy_merlin()) + [pieces]
 """
@@ -33,14 +33,14 @@ from pathlib import Path
 from furniture_design.knowledge import european_species
 from quern.provenance import Quantity
 from quern.tree import Node
-from wood_panels_unofficial import CLASSES, PRODUCTS
-from wood_panels_unofficial import materials as panel_materials
+from wood_panels import CLASSES, PRODUCTS
+from wood_panels import materials as panel_materials
 
 HERE = Path(__file__).parent
 SITEMAP = "sources/leroy-merlin-sitemap"
 
 # Every product line the sitemap's titles name: its words as Leroy Merlin's titles give them, the
-# form of board, where its values come from (wood-panels-unofficial classes or products, in the
+# form of board, where its values come from (wood-panels classes or products, in the
 # order they are tried, or a species material of furniture-design), whether the listing names the
 # class or maker those values belong to, and the key a connector's strengths are stored under.
 # (line, words, form, values from, named, connector_key)
@@ -124,7 +124,7 @@ def _range() -> list[dict]:
 
 @lru_cache(maxsize=1)
 def _boards() -> dict[str, list[Node]]:
-    """wood-panels-unofficial's materials by the class or product they are."""
+    """wood-panels's materials by the class or product they are."""
     out: dict[str, list[Node]] = {}
     for m in panel_materials():
         out.setdefault(m.payload.get("product") or m.payload["class"], []).append(m)
@@ -257,6 +257,6 @@ def materials() -> Node:
 
 
 def knowledge() -> list[Node]:
-    """The branches to merge beside furniture-design's and wood-panels-unofficial's: the sitemap
+    """The branches to merge beside furniture-design's and wood-panels's: the sitemap
     and the materials."""
     return [Node(id="sources", kind="", children=[sitemap()]), materials()]

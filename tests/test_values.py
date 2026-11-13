@@ -17,7 +17,7 @@ from quern import Quern, run_rules
 from furniture_design.knowledge import knowledge as general, merge
 from furniture_design.package import PACKAGE
 from leroy_merlin_unofficial import LINES, _range, knowledge
-from wood_panels_unofficial import knowledge as wood_panels
+from wood_panels import knowledge as wood_panels
 
 ROOT = Path(__file__).resolve().parents[1]
 CAPTURES = Path(os.environ.get("FURNITURE_REPO", ROOT.parent / "furniture")) / "sources" / "leroy-merlin"

@@ -130,15 +130,15 @@ def entries() -> list[Node]:
             ],
         ),
         Node(
-            id="the-range-is-data-on-wood-panels-boards", kind="decision",
+            id="the-range-is-data-on-wood-panels-boards", kind="decision", meta={"amended": "b0df928cd0ea wood-panels-unofficial was renamed wood-panels; the claim is unchanged"},
             name="This package holds what Leroy Merlin lists (range.json, read into one clause per product) and "
-                 "which board each line is; the boards' values, a class's or a maker's, are wood-panels-unofficial's "
+                 "which board each line is; the boards' values, a class's or a maker's, are wood-panels's "
                  "materials, which each line's material copies. This repo defines no kind or rule and holds no maker "
                  "document",
             payload={"decided_on": "2026-11-13", "the_owner": OWNER_SPLIT,
                      "why": "A maker's declaration and a class's figures hold wherever the board is sold; what the "
                             "shop adds is which boards it lists, in which thicknesses and sheets "
-                            "(wood-panels-unofficial: the-classes-and-the-makers-are-one-package)."},
+                            "(wood-panels: the-classes-and-the-makers-are-one-package)."},
             links={"supersedes": ["the-panels-are-data-on-furniture-designs-kinds"]},
             children=[
                 _alt("makers-here", "Keep the makers' documents in this package",
@@ -146,7 +146,7 @@ def entries() -> list[Node]:
             ],
         ),
         Node(
-            id="a-line-takes-its-classs-values-or-a-makers", kind="decision",
+            id="a-line-takes-its-classs-values-or-a-makers", kind="decision", meta={"amended": "b67e56213391 wood-panels-unofficial was renamed wood-panels; the claim is unchanged"},
             name="A line of particleboard, MDF or OSB takes its class's values (P2 for plain and melamine-faced "
                  "particleboard, P3 for moisture-resistant, MDF for médium, OSB/3), and a line of plywood or 3-ply "
                  "a maker's board of the same type; a line whose listing names the class or the maker (OSB 3, "
@@ -154,7 +154,7 @@ def entries() -> list[Node]:
                  "ungrounded, the material saying what the label on the panel settles; a solid-wood line takes "
                  "its species' values, and the weaker species where its name covers two",
             payload={"decided_on": "2026-11-13", "the_owner": OWNER_CLASS,
-                     "why": "A particleboard's strength is its class's, not its maker's (wood-panels-unofficial: "
+                     "why": "A particleboard's strength is its class's, not its maker's (wood-panels: "
                             "a-boards-strength-is-its-classs), so an unbranded board of a known type needs only "
                             "its class confirmed; the class a type is sold under is the usual one, not a certainty "
                             "('hydrofuge' may be P3 or P5), so it stays ungrounded until the label says. Plywood's "
@@ -167,11 +167,11 @@ def entries() -> list[Node]:
             ],
         ),
         Node(
-            id="the-range-is-checked-against-the-sitemap-as-fetched", kind="decision",
+            id="the-range-is-checked-against-the-sitemap-as-fetched", kind="decision", meta={"amended": "e8f18c1fd99b wood-panels-unofficial was renamed wood-panels; the claim is unchanged"},
             name="Every product's line, thickness and sheet size is checked by a test against the sitemap entry as "
                  "fetched, kept in the private repo xag/furniture (sources/leroy-merlin/sitemap-entries.json) with "
                  "the sha256 of each sitemap file; the test fails, never skips, when the copy is not beside this "
-                 "repo. The boards' values are checked by wood-panels-unofficial's tests",
+                 "repo. The boards' values are checked by wood-panels's tests",
             payload={"decided_on": "2026-11-13",
                      "why": "A size with no copy to check it against is a number someone typed; a skipped check "
                             "reads as green on every machine that cannot run it."},
@@ -192,11 +192,11 @@ def entries() -> list[Node]:
                              "class and the maker's declaration number."},
             links={"rests_on": ["a-line-takes-its-classs-values-or-a-makers"]},
             children=[
-                Node(id="read-the-label-in-the-store", kind="discharge",
+                Node(id="read-the-label-in-the-store", kind="discharge", meta={"amended": "6a22888abb56 wood-panels-unofficial was renamed wood-panels; the claim is unchanged"},
                      name="Read the class, the maker and the declaration number on the panel",
                      payload={"who": "whoever is at the shop, and the assistant once the label is photographed",
                               "how": "Name the line's class or maker in LINES (adding the maker's declaration to "
-                                     "wood-panels-unofficial when it is new), and the line's values become grounded"}),
+                                     "wood-panels when it is new), and the line's values become grounded"}),
                 Node(id="tombstone-the-makers-of-the-unbranded-lines", kind="tombstone",
                      name="'the-makers-of-the-unbranded-lines' - replaced",
                      payload={"was": "the-makers-of-the-unbranded-lines",
@@ -215,23 +215,23 @@ def entries() -> list[Node]:
                              "makers' tables stop short of those thicknesses."},
             links={"rests_on": ["a-material-is-one-line-in-one-thickness"]},
             children=[
-                Node(id="find-what-each-line-is", kind="discharge",
+                Node(id="find-what-each-line-is", kind="discharge", meta={"amended": "48f8b4e6a0a3 wood-panels-unofficial was renamed wood-panels; the claim is unchanged"},
                      name="Find what each of these boards is and a published value for it",
                      payload={"who": "whoever is at the shop, or a maker's reply",
                               "how": "Read the species and the maker on the label, find their declaration, and add it "
-                                     "to wood-panels-unofficial"}),
+                                     "to wood-panels"}),
                 Node(id="tombstone-lines-with-no-values", kind="tombstone",
                      name="'lines-with-no-values' - replaced",
                      payload={"was": "lines-with-no-values",
                               "why": "28 mm particleboard now takes P2's values; this debt lists what is still missing"}),
-                Node(id="tombstone-thebaults-sheets", kind="tombstone",
+                Node(id="tombstone-thebaults-sheets", kind="tombstone", meta={"amended": "8cb68a7607ef wood-panels-unofficial was renamed wood-panels; the claim is unchanged"},
                      name="'thebaults-sheets-disagree-with-its-declaration' - moved",
                      payload={"was": "thebaults-sheets-disagree-with-its-declaration",
-                              "why": "Thebault's documents are wood-panels-unofficial's now, and so is the debt"}),
-                Node(id="tombstone-a-true-modulus-without-its-shear", kind="tombstone",
+                              "why": "Thebault's documents are wood-panels's now, and so is the debt"}),
+                Node(id="tombstone-a-true-modulus-without-its-shear", kind="tombstone", meta={"amended": "20bf022daf26 wood-panels-unofficial was renamed wood-panels; the claim is unchanged"},
                      name="'a-true-modulus-without-its-shear' - moved",
                      payload={"was": "a-true-modulus-without-its-shear",
-                              "why": "Thebault's documents are wood-panels-unofficial's now, and so is the debt"}),
+                              "why": "Thebault's documents are wood-panels's now, and so is the debt"}),
             ],
         ),
     ]

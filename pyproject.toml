@@ -1,11 +1,11 @@
 [project]
 name = "leroy-merlin-unofficial"
 version = "0.1.0"
-description = "The wood panels Leroy Merlin France sells, each line read as a class or maker board of wood-panels-unofficial, as data on furniture-design's kinds. Unofficial: not written or endorsed by Leroy Merlin."
+description = "The wood panels Leroy Merlin France sells, each line read as a class or maker board of wood-panels, as data on furniture-design's kinds. Unofficial: not written or endorsed by Leroy Merlin."
 requires-python = ">=3.11"
 license = "AGPL-3.0-or-later AND CC-BY-NC-ND-4.0"
 license-files = ["LICENSE", "LICENSE-DATA"]
-dependencies = ["quern", "furniture-design", "wood-panels-unofficial"]
+dependencies = ["quern", "furniture-design", "wood-panels"]
 
 [build-system]
 requires = ["hatchling"]
@@ -22,7 +22,7 @@ dev = ["pytest>=8.0.0", "pytest-testmon>=2.1"]
 # per distribution across a resolution.
 quern = { git = "https://github.com/xag/quern", rev = "07eff6efc0625ee0613a083095db4e6b75be7284" }
 furniture-design = { git = "https://github.com/xag/furniture-design", rev = "a69f1a92f3aa9de29bdf3a9f482b18b7f3117265" }
-wood-panels-unofficial = { git = "https://github.com/xag/wood-panels-unofficial", rev = "cd2f63d1c233ffdaf8736e2235c32db5c62466f5" }
+wood-panels = { git = "https://github.com/xag/wood-panels", rev = "34a7289446e35fdab3c51a2f0271ea4751d18283" }
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

@@ -2,7 +2,7 @@
   {
     "path": "a-line-takes-its-classs-values-or-a-makers",
     "kind": "decision",
-    "digest": "9a227f9a3495"
+    "digest": "b67e56213391"
   },
   {
     "path": "a-line-takes-its-classs-values-or-a-makers/maker-values-for-classed-boards",
@@ -42,12 +42,12 @@
   {
     "path": "lines-without-values/find-what-each-line-is",
     "kind": "discharge",
-    "digest": "7c053dd544f1"
+    "digest": "48f8b4e6a0a3"
   },
   {
     "path": "lines-without-values/tombstone-a-true-modulus-without-its-shear",
     "kind": "tombstone",
-    "digest": "16518d77d9e7"
+    "digest": "20bf022daf26"
   },
   {
     "path": "lines-without-values/tombstone-lines-with-no-values",
@@ -57,7 +57,7 @@
   {
     "path": "lines-without-values/tombstone-thebaults-sheets",
     "kind": "tombstone",
-    "digest": "a2bc60163e5b"
+    "digest": "8cb68a7607ef"
   },
   {
     "path": "the-knowledge-is-shared-unchanged-and-improved-only-here",
@@ -87,7 +87,7 @@
   {
     "path": "the-range-is-checked-against-the-sitemap-as-fetched",
     "kind": "decision",
-    "digest": "8361a91b8cc6"
+    "digest": "e8f18c1fd99b"
   },
   {
     "path": "the-range-is-checked-against-the-sitemap-as-fetched/skip-without-the-copy",
@@ -97,7 +97,7 @@
   {
     "path": "the-range-is-data-on-wood-panels-boards",
     "kind": "decision",
-    "digest": "5f9592138e74"
+    "digest": "b0df928cd0ea"
   },
   {
     "path": "the-range-is-data-on-wood-panels-boards/makers-here",
@@ -137,7 +137,7 @@
   {
     "path": "what-the-unbranded-lines-are/read-the-label-in-the-store",
     "kind": "discharge",
-    "digest": "3d25720bb93c"
+    "digest": "6a22888abb56"
   },
   {
     "path": "what-the-unbranded-lines-are/tombstone-the-makers-of-the-unbranded-lines",
