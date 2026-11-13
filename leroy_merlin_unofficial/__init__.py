@@ -30,7 +30,7 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-from furniture_design.knowledge import european_species
+from furniture_design.knowledge import knowledge as general_knowledge
 from quern.provenance import Quantity
 from quern.tree import Node
 from wood_panels import CLASSES, PRODUCTS
@@ -63,11 +63,11 @@ LINES = [
     ("osb-3", "OSB 3", "OSB/3", ["osb-3"], True, "osb"),
     ("osb-3-kronospan", "OSB 3 Kronospan", "OSB/3", ["kronospan-osb-3"], True, "osb"),
     ("osb-3-swiss-krono", "OSB 3 Swiss Krono", "OSB/3", ["swiss-krono-osb-3"], True, "osb"),
-    ("osb-bouleau-swiss-krono", "OSB bouleau Swiss Krono", "OSB/3", [], False, "osb"),
-    ("contreplaque-peuplier", "contreplaqué peuplier", "plywood", ["garnica-poplar-plywood", "toro-poplar-plywood"],
-     False, "plywood"),
+    ("osb-bouleau-swiss-krono", "OSB bouleau Swiss Krono", "OSB/3", ["swiss-krono-osb-3", "osb-3"], False, "osb"),
+    ("contreplaque-peuplier", "contreplaqué peuplier", "plywood",
+     ["garnica-poplar-plywood", "toro-poplar-plywood", "allin-poplar-plywood"], False, "plywood"),
     ("contreplaque-peuplier-pircher", "contreplaqué peuplier Pircher", "plywood",
-     ["garnica-poplar-plywood", "toro-poplar-plywood"], False, "plywood"),
+     ["garnica-poplar-plywood", "toro-poplar-plywood", "allin-poplar-plywood"], False, "plywood"),
     ("contreplaque-okoume-exterieur", "contreplaqué okoumé extérieur", "plywood", ["thebault-teboply-okoume"], False,
      "plywood"),
     ("contreplaque-okoume-nautique", "contreplaqué okoumé nautique", "plywood", ["thebault-teboply-okoume"], False,
@@ -83,14 +83,14 @@ LINES = [
     ("contreplaque-marin-pin", "contreplaqué marin pin", "plywood", ["thebault-tebopin"], False, "plywood"),
     ("panneau-3-plis-epicea", "panneau 3 plis épicéa", "solid wood panel", ["binderholz-3-ply-spruce"], False,
      "plywood"),
-    ("contreplaque-ordinaire", "contreplaqué ordinaire", "plywood", [], False, "plywood"),
-    ("contreplaque-naturel", "contreplaqué naturel", "plywood", [], False, "plywood"),
-    ("contreplaque", "contreplaqué", "plywood", [], False, "plywood"),
+    ("contreplaque-ordinaire", "contreplaqué ordinaire", "plywood", ["allin-poplar-plywood"], False, "plywood"),
+    ("contreplaque-naturel", "contreplaqué naturel", "plywood", ["allin-poplar-plywood"], False, "plywood"),
+    ("contreplaque", "contreplaqué", "plywood", ["allin-poplar-plywood"], False, "plywood"),
     ("contreplaque-decor", "contreplaqué décor", "plywood", [], False, "plywood"),
     ("lamelle-colle-chene", "chêne lamellé-collé", "glued solid wood", "oak-european", True, None),
     ("lamelle-colle-hetre", "hêtre lamellé-collé", "glued solid wood", "beech-european", True, None),
     ("massif-hetre-vaporise", "hêtre massif vaporisé", "solid wood", "beech-european", False, None),
-    ("massif-hetre-thermo", "hêtre thermo massif", "solid wood", None, False, "beech"),
+    ("massif-hetre-thermo", "hêtre thermo massif", "solid wood", "beech-thermally-modified", False, None),
     ("lamelle-colle-frene", "frêne lamellé-collé", "glued solid wood", "ash-european", True, None),
     ("lamelle-colle-sapin", "sapin lamellé-collé", "glued solid wood", "spruce-norway", False, None),
     ("lamelle-colle-epicea", "épicéa lamellé-collé", "glued solid wood", "spruce-norway", True, None),
@@ -98,7 +98,7 @@ LINES = [
     ("lamelle-colle-aulne", "aulne lamellé-collé", "glued solid wood", "alder-black", True, None),
     ("lamelle-colle-teck", "teck lamellé-collé", "glued solid wood", "teak", True, None),
     ("massif-pin", "pin massif", "solid wood", "pine-maritime", False, None),
-    ("massif-eucalyptus", "eucalyptus massif", "solid wood", None, False, None),
+    ("massif-eucalyptus", "eucalyptus massif", "solid wood", "eucalyptus-grandis", False, None),
 ]
 # Why a line's values are borrowed, when they are: what the listing says and what was taken
 BORROWED = {
@@ -106,6 +106,20 @@ BORROWED = {
     "lamelle-colle-acacia": "'acacia' is sold for robinia and for Acacia mangium; mangium is the weaker",
     "massif-pin": "the title names no pine; maritime pine is the weaker of the two sold in France",
     "massif-hetre-vaporise": "steamed beech, read as beech",
+    "massif-eucalyptus": "the title names no species; Eucalyptus grandis, the plantation eucalyptus Europe mostly "
+                         "imports according to CIRAD's Tropix, is read, and E. globulus is the other candidate",
+    "massif-hetre-thermo": "thermally modified beech, read as beech treated at 190 °C for 3.5 h (Schmidtová et al. "
+                           "2026); the treatment of the board on sale is unknown, and strength falls as its "
+                           "temperature rises",
+}
+# Why a panel line's board is a stand-in, when its listing names no species or the board is not certain
+STAND_IN = {
+    "osb-bouleau-swiss-krono": "Swiss Krono declares one OSB, its OSB/3 (DoP CPR-164), and names no birch OSB; "
+                               "'bouleau' is read as birch among that board's hardwood strands. The label states "
+                               "the board and its class.",
+    **{line: "the title names no species; ALLIN's all-poplar plywood is read, the less stiff of the two French "
+             "boards (poplar, okoumé) that cover these thicknesses. The label says what the board is."
+       for line in ("contreplaque", "contreplaque-naturel", "contreplaque-ordinaire")},
 }
 # A thickness a maker's table states under another nominal: Leroy Merlin's 6 mm birch is the
 # 6.5 mm of the birch plywood tables
@@ -207,12 +221,18 @@ def _panel(line: str, words: str, form: str, boards: list[str], named: bool, key
         if "same_panel_as" in payload:
             payload["same_panel_as"] = f"{base}-{first}"
         if not named:
-            payload["leroy_merlin"]["unverified"] = _unverified(board)
+            payload["leroy_merlin"]["unverified"] = STAND_IN.get(line) or _unverified(board)
         params = {k: v if named else v.model_copy(update={"grounded": False}) for k, v in m.params.items()}
         out.append(Node(id=f"{base}-{tag}" if tag else base, kind="material",
                         name=f"Leroy Merlin, {words}, {t:g} mm" + (f", bent {m.payload['measured_along']}" if tag else ""),
                         payload=payload, params=params, links={"per": list(m.links["per"])}))
     return out
+
+
+@lru_cache(maxsize=1)
+def _general_materials() -> dict[str, Node]:
+    """furniture-design's materials by id: the species and the treated woods a solid-wood line reads."""
+    return {m.id: m for b in general_knowledge() if b.id == "materials" for m in b.children}
 
 
 def _solid(line: str, words: str, form: str, species: str | None, named: bool, t: float) -> Node:
@@ -225,7 +245,7 @@ def _solid(line: str, words: str, form: str, species: str | None, named: bool, t
                              "leroy_merlin": {**shop, "values_from": None,
                                               "missing": "no published values for this wood"}},
                     links={"per": sold["products"]})
-    src = next(m for m in european_species() if m.id == species)
+    src = _general_materials()[species]
     payload = {**src.payload, "form": form, "leroy_merlin": {**shop, "values_from": f"materials/{species}"}}
     params = {k: v.model_copy(update={"grounded": named}) for k, v in src.params.items()}
     if not named:

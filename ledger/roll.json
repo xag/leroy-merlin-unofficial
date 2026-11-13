@@ -1,5 +1,20 @@
 [
   {
+    "path": "a-line-naming-no-species-takes-the-weaker-stand-in",
+    "kind": "decision",
+    "digest": "06a281ec05be"
+  },
+  {
+    "path": "a-line-naming-no-species-takes-the-weaker-stand-in/leave-them-without-values",
+    "kind": "alternative",
+    "digest": "64609852b20f"
+  },
+  {
+    "path": "a-line-naming-no-species-takes-the-weaker-stand-in/okoume-for-plain-plywood",
+    "kind": "alternative",
+    "digest": "75c8aa94838d"
+  },
+  {
     "path": "a-line-takes-its-classs-values-or-a-makers",
     "kind": "decision",
     "digest": "b67e56213391"
@@ -33,6 +48,16 @@
     "path": "a-material-is-one-line-in-one-thickness/one-material-per-line",
     "kind": "alternative",
     "digest": "a355824339e6"
+  },
+  {
+    "path": "lines-still-without-values",
+    "kind": "debt",
+    "digest": "cd8e7a49b45c"
+  },
+  {
+    "path": "lines-still-without-values/find-these-boards",
+    "kind": "discharge",
+    "digest": "48f8b4e6a0a3"
   },
   {
     "path": "lines-without-values",

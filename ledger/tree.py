@@ -205,6 +205,46 @@ def entries() -> list[Node]:
             ],
         ),
         Node(
+            id="a-line-naming-no-species-takes-the-weaker-stand-in", kind="decision",
+            name="A line whose title names no species or whose board is uncertain takes a stand-in's values, every "
+                 "one ungrounded, the material saying what was read and what the label settles: plain, natural and "
+                 "ordinary plywood read as ALLIN's all-poplar plywood (the less stiff of the two French boards that "
+                 "cover those thicknesses), OSB bouleau Swiss Krono as Swiss Krono's OSB/3 (its one declared OSB), "
+                 "eucalyptus as Eucalyptus grandis, thermo beech as beech treated at 190 °C",
+            payload={"decided_on": "2026-11-13",
+                     "the_owner": "Now source lots of data from authoritative sources to answer any relevant "
+                                  "question about the bench for any choice of wood panel",
+                     "why": "A line without values judges nothing, so a question about the bench in that board had "
+                            "no answer; an ungrounded stand-in answers it and says it is not the board's own. The "
+                            "weaker of two candidates keeps the answer on the side that holds when the label shows "
+                            "the other, as the solid-wood lines already do."},
+            links={"rests_on": ["a-line-takes-its-classs-values-or-a-makers"]},
+            children=[
+                _alt("leave-them-without-values", "Leave these lines without values until the label is read",
+                     "Every question about the bench in these boards stays unanswered, though the type is known."),
+                _alt("okoume-for-plain-plywood", "Read plain plywood as ALLIN's okoumé",
+                     "Okoumé is the stiffer of the two; a poplar board on sale would then sag more than predicted."),
+            ],
+        ),
+        Node(
+            id="lines-still-without-values", kind="debt",
+            name="Contreplaqué décor, 3 mm poplar, 5 and 10 mm Powerplex, 5 mm pine plywood, and plain plywood at "
+                 "3, 9, 19 and 27 mm have no published values here, and judge nothing",
+            payload={"decided_on": "2026-11-13",
+                     "what": "Décor plywood states no thickness, maker or core; ALLIN's poplar starts at 5 mm and "
+                             "states no 9, 19 or 27 mm; Houtwerf declares Powerplex only at 15 and 18 mm; pine "
+                             "plywood declarations start at 7 to 12 mm."},
+            links={"rests_on": ["a-material-is-one-line-in-one-thickness"],
+                   "supersedes": ["lines-without-values"]},
+            children=[
+                Node(id="find-these-boards", kind="discharge",
+                     name="Find what each of these boards is and a published value for it",
+                     payload={"who": "whoever is at the shop, or a maker's reply",
+                              "how": "Read the species and the maker on the label, find their declaration, and add "
+                                     "it to wood-panels"}),
+            ],
+        ),
+        Node(
             id="lines-without-values", kind="debt",
             name="Contreplaqué ordinaire, contreplaqué naturel, contreplaqué, contreplaqué décor, OSB bouleau Swiss "
                  "Krono, hêtre thermo and eucalyptus have no published values here, nor do 3 mm poplar, 5 mm "
