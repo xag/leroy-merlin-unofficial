@@ -335,6 +335,7 @@ source = { editable = "." }
 dependencies = [
     { name = "furniture-design" },
     { name = "quern" },
+    { name = "wood-panels-unofficial" },
 ]
 
 [package.dev-dependencies]
@@ -347,6 +348,7 @@ dev = [
 requires-dist = [
     { name = "furniture-design", git = "https://github.com/xag/furniture-design?rev=a69f1a92f3aa9de29bdf3a9f482b18b7f3117265" },
     { name = "quern", git = "https://github.com/xag/quern?rev=07eff6efc0625ee0613a083095db4e6b75be7284" },
+    { name = "wood-panels-unofficial", git = "https://github.com/xag/wood-panels-unofficial?rev=cd2f63d1c233ffdaf8736e2235c32db5c62466f5" },
 ]
 
 [package.metadata.requires-dev]
@@ -947,6 +949,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/b8/18851a2017a3199cb2edccc24404b50e01a47ab02b675f26b440a4c84ece/wasmtime-50.0.1-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:e3e2051b02b8a47e2418f569e380843e87c1d74c40cd843bfa14c223245d420b", size = 9620371, upload-time = "2026-10-22T03:00:06.595Z" },
     { url = "https://files.pythonhosted.org/packages/df/3a/e14287689ed571c9a001201a0349299d50bf6251ee09f4f6e467b4b1212b/wasmtime-50.0.1-py3-none-win_amd64.whl", hash = "sha256:a8999581230471f4ff62073b1111eff3a01d45ccec0a908da3f2ae3a499d459c", size = 7991861, upload-time = "2026-10-22T03:00:08.818Z" },
     { url = "https://files.pythonhosted.org/packages/46/9e/c5d0f1f1d4b9d0f6f975de8017ba296e8a36e856d5efbcc76854c667e2fb/wasmtime-50.0.1-py3-none-win_arm64.whl", hash = "sha256:83ddab2358ebde392a065581f2c66995a711ccc25ad0aee7b1d20f8c688075d2", size = 6910407, upload-time = "2026-10-22T03:00:10.61Z" },
+]
+
+[[package]]
+name = "wood-panels-unofficial"
+version = "0.1.0"
+source = { git = "https://github.com/xag/wood-panels-unofficial?rev=cd2f63d1c233ffdaf8736e2235c32db5c62466f5#cd2f63d1c233ffdaf8736e2235c32db5c62466f5" }
+dependencies = [
+    { name = "furniture-design" },
+    { name = "quern" },
 ]
 
 [[package]]
