@@ -201,6 +201,12 @@ def _unverified(board: str) -> str:
             "the same type. The label on the panel says who made it.")
 
 
+def _label(words: str) -> str:
+    """What the documents call the board: the line's words and the shop (furniture-design reads a
+    material's payload label)."""
+    return f"{words[:1].upper()}{words[1:]} Leroy Merlin"
+
+
 def _panel(line: str, words: str, form: str, boards: list[str], named: bool, key: str, t: float) -> list[Node]:
     sold = _sold(line, t)
     base = f"lm-{line}-{_mm(t)}"
@@ -209,6 +215,7 @@ def _panel(line: str, words: str, form: str, boards: list[str], named: bool, key
     if not found:
         return [Node(id=base, kind="material", name=f"Leroy Merlin, {words}, {t:g} mm",
                      payload={"form": form, "measured_along": "unstated", "connector_key": key,
+                              "label": _label(words),
                               "leroy_merlin": {**shop, "values_from": None,
                                                "missing": "no published values for this line and thickness"}},
                      links={"per": sold["products"]})]
@@ -217,7 +224,8 @@ def _panel(line: str, words: str, form: str, boards: list[str], named: bool, key
     out = []
     for m in band:
         tag = TAGS.get(m.payload["measured_along"], "")
-        payload = {**m.payload, "form": form, "leroy_merlin": {**shop, "values_from": f"materials/{m.id}"}}
+        payload = {**m.payload, "form": form, "label": _label(words),
+                   "leroy_merlin": {**shop, "values_from": f"materials/{m.id}"}}
         if "same_panel_as" in payload:
             payload["same_panel_as"] = f"{base}-{first}"
         if not named:
@@ -242,11 +250,13 @@ def _solid(line: str, words: str, form: str, species: str | None, named: bool, t
     if species is None:
         return Node(id=mid, kind="material", name=f"Leroy Merlin, {words}, {t:g} mm",
                     payload={"form": form, "measured_along": "unstated", "connector_key": None,
+                             "label": _label(words),
                              "leroy_merlin": {**shop, "values_from": None,
                                               "missing": "no published values for this wood"}},
                     links={"per": sold["products"]})
     src = _general_materials()[species]
-    payload = {**src.payload, "form": form, "leroy_merlin": {**shop, "values_from": f"materials/{species}"}}
+    payload = {**src.payload, "form": form, "label": _label(words),
+               "leroy_merlin": {**shop, "values_from": f"materials/{species}"}}
     params = {k: v.model_copy(update={"grounded": named}) for k, v in src.params.items()}
     if not named:
         payload["leroy_merlin"]["unverified"] = BORROWED[line]
@@ -265,6 +275,7 @@ def materials() -> Node:
                 if t is None:
                     out.append(Node(id=f"lm-{line}", kind="material", name=f"Leroy Merlin, {words}",
                                     payload={"form": form, "measured_along": "unstated", "connector_key": key,
+                                             "label": _label(words),
                                              "leroy_merlin": {"line": line, **_sold(line, None), "named": False,
                                                               "values_from": None,
                                                               "missing": "the title states no thickness"}},

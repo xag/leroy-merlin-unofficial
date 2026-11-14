@@ -104,3 +104,11 @@ def test_a_plywood_board_is_two_materials_one_per_way_it_bends():
     # Leroy Merlin's 6 mm birch is the tables' 6.5 mm
     assert ms["lm-contreplaque-bouleau-6-along"].payload["leroy_merlin"]["values_from"] == \
         "materials/riga-wood-birch-plywood-6.5-along"
+
+
+def test_every_material_is_called_by_its_lines_words_and_the_shop():
+    from leroy_merlin_unofficial import LINES, materials
+    words = {line: w for line, w, *_ in LINES}
+    for m in materials().children:
+        line = m.payload["leroy_merlin"]["line"]
+        assert m.payload["label"] == f"{words[line][:1].upper()}{words[line][1:]} Leroy Merlin", m.id
