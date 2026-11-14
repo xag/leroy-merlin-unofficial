@@ -112,3 +112,39 @@ def test_every_material_is_called_by_its_lines_words_and_the_shop():
     for m in materials().children:
         line = m.payload["leroy_merlin"]["line"]
         assert m.payload["label"] == f"{words[line][:1].upper()}{words[line][1:]} Leroy Merlin", m.id
+
+
+def _bench_rail(material: str, width: float) -> Quern:
+    from quern.provenance import Quantity
+    from quern.tree import Node
+    tree = Quern(vocabulary=PACKAGE.vocabulary, rules=PACKAGE.rules, solvers=PACKAGE.solvers)
+    rail = Node(id="rail", kind="part",
+                links={"uses": [material], "sawn_with": ["tools/leroy-merlin-cutting-service"]},
+                params={"thickness": Quantity(value=18, unit="mm", provenance="design-target")},
+                payload={"shape": {"op": "box", "size": [744, 18, width]}})
+    tree.root.children = merge(general(), wood_panels(), knowledge()) + [
+        Node(id="pieces", kind="", children=[Node(id="bench", kind="piece", children=[rail])])]
+    return tree
+
+
+def _verdicts(tree: Quern) -> dict[str, str]:
+    return {r.rule: r.verdict for r in run_rules(tree, "pieces/bench") if r.node == "pieces/bench/rail"}
+
+
+def test_the_cutting_service_cuts_nothing_under_10_cm_and_no_glulam_as_reported():
+    tools = next(b for b in knowledge() if b.id == "tools").children
+    (service,) = tools
+    q = service.params["min_part_width"]
+    assert (q.value, q.grounded, q.provenance) == (100, False, "reported")
+    refused = set(service.links["refuses"])
+    assert refused and all("lamelle-colle" in m for m in refused)
+    assert "materials/lm-lamelle-colle-sapin-18" in refused
+    narrow, material = "a-part-is-no-narrower-than-its-saw-cuts", "a-part-is-cut-by-a-saw-that-cuts-its-material"
+    v = _verdicts(_bench_rail("materials/lm-mdf-18", 75))
+    assert (v[narrow], v[material]) == ("broken", "holds")
+    v = _verdicts(_bench_rail("materials/lm-mdf-18", 250))
+    assert (v[narrow], v[material]) == ("holds", "holds")
+    v = _verdicts(_bench_rail("materials/lm-lamelle-colle-sapin-18", 250))
+    assert v[material] == "broken"
+    # no source gives the service's cut: a part sent to it is refused until one is stated
+    assert v["a-part-is-sawn-with-a-saw-that-states-its-cut"] == "broken"

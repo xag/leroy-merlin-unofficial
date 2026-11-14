@@ -9,7 +9,9 @@ The wood panels Leroy Merlin France sells, each line read as a board of [wood-pa
 - **The materials**: one per line and thickness (`materials/lm-<line>-<thickness>`), two for a board that bends differently along and across (`-along`/`-across` for plywood, `-major`/`-minor` for OSB). Each copies its board's values and says what is sold (products, sheets, cut to size) and which wood-panels material its values are (`leroy_merlin.values_from`).
 - **What the listing does not say**: when a line's listing names neither the class nor the maker (aggloméré naturel is read as P2, médium as MDF, birch plywood as Riga Wood's), every value is ungrounded and the material says what the label on the panel settles: its CE marking states the class and the maker's declaration. Lines nothing describes (plain plywood, décor plywood, birch OSB, thermo beech, eucalyptus) have a material with what is sold and no values.
 
-No kinds and no rules of its own: a part that `uses` one of these materials is judged by furniture-design's rules.
+- **The cutting service**: `tools/leroy-merlin-cutting-service`, a tool a part links `sawn_with`. As one store said on 14 November 2026, it cuts nothing narrower than 100 mm (`min_part_width`) and does not cut lamellé-collé (`refuses` every lamellé-collé line). Both are ungrounded: Leroy Merlin publishes no rule of the service that could be read. It states no cut and no depth, so furniture-design refuses a part sent to it until its cut is stated.
+
+No kinds and no rules of its own: a part that `uses` one of these materials, or is cut by the service, is judged by furniture-design's rules.
 
 ## Sources
 

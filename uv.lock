@@ -312,7 +312,7 @@ wheels = [
 [[package]]
 name = "furniture-design"
 version = "0.1.0"
-source = { git = "https://github.com/xag/furniture-design?rev=af9f44d393836d1ae980ba83360206166fa5811f#af9f44d393836d1ae980ba83360206166fa5811f" }
+source = { git = "https://github.com/xag/furniture-design?rev=1ed265914792c9d962ff98477c4836c1a8325b4f#1ed265914792c9d962ff98477c4836c1a8325b4f" }
 dependencies = [
     { name = "quern" },
     { name = "reportlab" },
@@ -346,9 +346,9 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "furniture-design", git = "https://github.com/xag/furniture-design?rev=af9f44d393836d1ae980ba83360206166fa5811f" },
+    { name = "furniture-design", git = "https://github.com/xag/furniture-design?rev=1ed265914792c9d962ff98477c4836c1a8325b4f" },
     { name = "quern", git = "https://github.com/xag/quern?rev=07eff6efc0625ee0613a083095db4e6b75be7284" },
-    { name = "wood-panels", git = "https://github.com/xag/wood-panels?rev=58ece47faee344a6c84305aa4b532126461dabe8" },
+    { name = "wood-panels", git = "https://github.com/xag/wood-panels?rev=6e9102a61be68a741546f7c2859df68b1915d53d" },
 ]
 
 [package.metadata.requires-dev]
@@ -954,7 +954,7 @@ wheels = [
 [[package]]
 name = "wood-panels"
 version = "0.1.0"
-source = { git = "https://github.com/xag/wood-panels?rev=58ece47faee344a6c84305aa4b532126461dabe8#58ece47faee344a6c84305aa4b532126461dabe8" }
+source = { git = "https://github.com/xag/wood-panels?rev=6e9102a61be68a741546f7c2859df68b1915d53d#6e9102a61be68a741546f7c2859df68b1915d53d" }
 dependencies = [
     { name = "furniture-design" },
     { name = "quern" },

@@ -287,7 +287,49 @@ def materials() -> Node:
     return Node(id="materials", kind="", children=out)
 
 
+VISIT = "sources/leroy-merlin-store-visit-2026-11-14"
+
+
+def store_visit() -> Node:
+    """What a store's cutting service said it does not do, as reported after a visit: no source Leroy
+    Merlin publishes says it (its pages are behind a captcha), so every value is ungrounded."""
+    return Node(id="leroy-merlin-store-visit-2026-11-14", kind="source",
+                name="Leroy Merlin France, a store's cutting service, as reported after a visit on 14 November 2026",
+                payload={"publisher": "reported by a customer of a Leroy Merlin France store", "year": 2026,
+                         "licence": "unstated",
+                         "in_our_words": "one store, by word of mouth; Leroy Merlin publishes no rule of its "
+                                         "cutting service that could be read"},
+                children=[
+                    Node(id="narrowest-cut", kind="clause",
+                         payload={"locator": "said in the store's cutting service",
+                                  "quote": "j'ai appris sur place qu'ils ne pouvaient pas faire une découpe de "
+                                           "moins de 10 cm de large"},
+                         params={"min_part_width": Quantity(value=100, unit="mm", provenance="reported",
+                                                            grounded=False, note="10 cm")}),
+                    Node(id="no-glulam", kind="clause",
+                         payload={"locator": "noted on the day of the visit",
+                                  "quote": "Le magasin ne découpe pas le lamellé-collé"}),
+                ])
+
+
+def cutting_service() -> Node:
+    """Leroy Merlin's cutting service as a tool a part links sawn_with: the narrowest part it cuts and
+    the boards it does not cut (every lamellé-collé line), as reported; it states no cut and no depth,
+    which no source gives."""
+    refuses = [f"materials/{m.id}" for m in materials().children
+               if (m.payload or {}).get("leroy_merlin", {}).get("line", "").startswith("lamelle-colle")]
+    return Node(id="leroy-merlin-cutting-service", kind="tool", name="Leroy Merlin's cutting service",
+                payload={"maker": "Leroy Merlin France", "saw_kind": "panel saw",
+                         "does": "cuts the panels the store sells to the customer's sizes, in straight cuts",
+                         "unverified": "reported from one store's cutting service, not published by Leroy Merlin"},
+                params={"min_part_width": Quantity(value=100, unit="mm", provenance="reported", grounded=False,
+                                                   derived_from=[f"{VISIT}/narrowest-cut/min_part_width"],
+                                                   note="as reported after a visit")},
+                links={"per": [f"{VISIT}/narrowest-cut", f"{VISIT}/no-glulam"], "refuses": refuses})
+
+
 def knowledge() -> list[Node]:
-    """The branches to merge beside furniture-design's and wood-panels's: the sitemap
-    and the materials."""
-    return [Node(id="sources", kind="", children=[sitemap()]), materials()]
+    """The branches to merge beside furniture-design's and wood-panels's: the sitemap and what a
+    store's cutting service said, the materials, and the cutting service as a tool."""
+    return [Node(id="sources", kind="", children=[sitemap(), store_visit()]), materials(),
+            Node(id="tools", kind="", children=[cutting_service()])]

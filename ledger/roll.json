@@ -85,6 +85,21 @@
     "digest": "8cb68a7607ef"
   },
   {
+    "path": "the-cutting-service-is-a-tool-with-what-a-store-said",
+    "kind": "decision",
+    "digest": "f46e2400d682"
+  },
+  {
+    "path": "the-cutting-service-is-a-tool-with-what-a-store-said/in-the-piece",
+    "kind": "alternative",
+    "digest": "7bc22e97cee6"
+  },
+  {
+    "path": "the-cutting-service-is-a-tool-with-what-a-store-said/leave-it-out-until-published",
+    "kind": "alternative",
+    "digest": "8f538886fe7f"
+  },
+  {
     "path": "the-knowledge-is-shared-unchanged-and-improved-only-here",
     "kind": "decision",
     "digest": "0e6ec2eea4a7"
