@@ -336,6 +336,32 @@ AUTHORITY = {
 }
 
 
+def _say(id_: str, name: str, text: str, *about: str) -> Node:
+    return Node(id=id_, kind="guidance", name=name, payload={"text": " ".join(text.split())},
+                links={"about": list(about)} if about else {})
+
+
+def guidance() -> Node:
+    """What whoever designs with this package is told before reading its nodes (furniture-design's kind
+    guidance): a reader gives it to its assistant and writes none of its own."""
+    return Node(id="guidance", kind="", children=[
+        _say("leroy-merlin-panels", "Leroy Merlin's panels", """
+            Leroy Merlin's panels are materials/lm-<line>-<thickness>, one per line and thickness; their
+            payload leroy_merlin says what a shop's payload shop says."""),
+        _say("standers-profiles", "Leroy Merlin's STANDERS profiles", """
+            Leroy Merlin's STANDERS profiles (aluminium and PVC U, double U, T, H and angles) are materials
+            standers-<shape>-<material>-<finish>-<h>x<w>x<t> (materials/standers-u-pvc-transparent-12x12x1 is
+            the clear U of that section), their params the section's sizes and their payload the lengths sold
+            and the shop's reference.""", "materials/standers-u-pvc-transparent-12x12x1"),
+        _say("leroy-merlin-cutting-service", "A part cut at Leroy Merlin", """
+            A part the person has cut at Leroy Merlin links sawn_with tools/leroy-merlin-cutting-service: it
+            states, as a store said, the narrowest part it cuts and the materials it refuses, and rules refuse
+            a part it would turn away. Nothing gives the width of its cut: ask the person to ask the store, or
+            to measure a cut it made, and state it on a tool of the piece's own.""",
+            "tools/leroy-merlin-cutting-service"),
+    ])
+
+
 def knowledge() -> list[Node]:
     """The branches to merge beside furniture-design's and wood-panels's: the sitemap and what a
     store's cutting service said, the materials (the panels, then the STANDERS profiles), and the cutting
@@ -344,4 +370,4 @@ def knowledge() -> list[Node]:
     panels = materials()
     panels.children += profiles.materials()
     return [Node(id="sources", kind="", children=with_authority([sitemap(), store_visit()], AUTHORITY) + [profiles.source()]),
-            panels, Node(id="tools", kind="", children=[cutting_service()])]
+            panels, Node(id="tools", kind="", children=[cutting_service()]), guidance()]
