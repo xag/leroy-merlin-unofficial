@@ -298,6 +298,31 @@ def entries() -> list[Node]:
                      "Every piece cut at Leroy Merlin would repeat them; they are the shop's, not the piece's."),
             ],
         ),
+        Node(
+            id="a-standers-profile-is-a-material-of-its-section", kind="decision",
+            name="Leroy Merlin's own STANDERS profiles (aluminium and PVC U, double U, T, H, angles) are read from the "
+                 "sitemap titles as the panels are: a title that states H, l, Ep and L is a product, one clause each; "
+                 "a material is one section in one material and finish, standers-<shape>-<material>-<finish>-<h>x<w>x<t>, "
+                 "its params the section's sizes and its payload sold_at_leroy_merlin the lengths and addresses sold. "
+                 "It states no density or strength, which no title gives; a title cut short or naming no wall is left out",
+            links={"rests_on": ["the-range-is-read-from-the-public-sitemap"]},
+            payload={"decided_on": "2026-11-15",
+                     "the_owner": "Je les sertirai de tiges plastique trouvées à Leroy Merlin. Les tiges elles mêmes iront "
+                                  "se loger dans des rails construits à partir d'éléments longs en alu [...] / Ok go",
+                     "why": "The owner's sliding doors are made of STANDERS profiles: the clear PVC U 87477510 by its "
+                            "label, a white aluminium angle 20 x 20 x 1 by its label. Their product pages are behind a "
+                            "captcha, so the titles are what is known, as for the panels. A profile is not a panel: "
+                            "lm- names a panel whose sheets the cutting sheet lays parts on, so a profile is named "
+                            "standers-."},
+            children=[
+                _alt("the-owners-profiles-only", "Add only the profiles the owner bought",
+                     "The next design uses others; the titles give every one the same way."),
+                _alt("lm-prefix", "Name them lm-standers-..., as the panels",
+                     "The cutting sheet reads an lm- material's sheet sizes, which a profile has not."),
+                _alt("a-density-for-aluminium-and-pvc", "Give aluminium and PVC a density so a part of them weighs",
+                     "No title or source read here prints one; a value with no source is not stated."),
+            ],
+        ),
     ]
 
 

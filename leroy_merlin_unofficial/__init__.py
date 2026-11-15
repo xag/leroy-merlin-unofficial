@@ -338,6 +338,10 @@ AUTHORITY = {
 
 def knowledge() -> list[Node]:
     """The branches to merge beside furniture-design's and wood-panels's: the sitemap and what a
-    store's cutting service said, the materials, and the cutting service as a tool."""
-    return [Node(id="sources", kind="", children=with_authority([sitemap(), store_visit()], AUTHORITY)), materials(),
-            Node(id="tools", kind="", children=[cutting_service()])]
+    store's cutting service said, the materials (the panels, then the STANDERS profiles), and the cutting
+    service as a tool."""
+    from leroy_merlin_unofficial import profiles
+    panels = materials()
+    panels.children += profiles.materials()
+    return [Node(id="sources", kind="", children=with_authority([sitemap(), store_visit()], AUTHORITY) + [profiles.source()]),
+            panels, Node(id="tools", kind="", children=[cutting_service()])]

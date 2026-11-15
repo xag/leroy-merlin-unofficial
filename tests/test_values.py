@@ -68,6 +68,8 @@ def test_the_data_passes_furniture_designs_rules():
 def test_a_line_whose_listing_names_neither_class_nor_maker_grounds_nothing():
     panels = {m.id: m for m in wood_panels()[1].children}
     for m in knowledge()[1].children:
+        if "leroy_merlin" not in m.payload:  # a STANDERS profile (tests/test_profiles.py), not a panel line
+            continue
         lm = m.payload["leroy_merlin"]
         if not m.params:
             assert lm["values_from"] is None and lm["missing"]

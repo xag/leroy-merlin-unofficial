@@ -50,6 +50,26 @@
     "digest": "a355824339e6"
   },
   {
+    "path": "a-standers-profile-is-a-material-of-its-section",
+    "kind": "decision",
+    "digest": "e0b371ed3be5"
+  },
+  {
+    "path": "a-standers-profile-is-a-material-of-its-section/a-density-for-aluminium-and-pvc",
+    "kind": "alternative",
+    "digest": "a81e53accdfd"
+  },
+  {
+    "path": "a-standers-profile-is-a-material-of-its-section/lm-prefix",
+    "kind": "alternative",
+    "digest": "522be32018d6"
+  },
+  {
+    "path": "a-standers-profile-is-a-material-of-its-section/the-owners-profiles-only",
+    "kind": "alternative",
+    "digest": "5c4a83a234a0"
+  },
+  {
     "path": "lines-still-without-values",
     "kind": "debt",
     "digest": "cd8e7a49b45c"

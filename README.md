@@ -13,6 +13,8 @@ The wood panels Leroy Merlin France sells, each line read as a board of [wood-pa
 
 No kinds and no rules of its own: a part that `uses` one of these materials, or is cut by the service, is judged by furniture-design's rules.
 
+Leroy Merlin's own STANDERS profiles are read the same way (`leroy_merlin_unofficial/profiles.py`, `profiles.json`, written by `tools/build_profiles.py`): every STANDERS entry whose title states the flange height, the width, the wall and the length sold (H × l × Ep, L), 223 of 296, is a product. A material is one section in one material and finish, `standers-<shape>-<material>-<finish>-<h>x<w>x<t>` (aluminium or PVC; U, double U, T, H, angle), its params `section_height`, `section_width` and `wall_thickness`, its payload `sold_at_leroy_merlin` the lengths and addresses. For example `standers-u-pvc-transparent-12x12x1` (87477510, 1 m) and `standers-u-aluminium-brut-12x12x1` (87477958, 1 m; 87477962, 2.5 m). No title gives a density or a strength, so none is stated.
+
 ## Sources
 
 The product pages are behind a captcha, which is not got round; the range comes from the sitemap the shop publishes for robots. The entries as fetched are kept in a private repo, and `tests/test_values.py` checks every product's sizes against them: clone that repo beside this one, or set `FURNITURE_REPO`, or that test fails and says why. The boards' values, and their checks against the makers' documents, are wood-panels's.
