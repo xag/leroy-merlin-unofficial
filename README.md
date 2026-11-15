@@ -49,4 +49,4 @@ The open debts: what the unbranded lines are (their class or maker, read from th
 
 ## Tests
 
-`uv run pytest --testmon`, then `uv run pytest`. Both stop at the first failure.
+`uv run pytest` runs the tests whose code, data or packages changed since they passed, last failures first then the fastest, under a time budget (testplan); `uv run pytest --all` runs them all, once a day. Both stop at the first failure.
