@@ -30,6 +30,7 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
+from furniture_design.knowledge import with_authority
 from furniture_design.knowledge import knowledge as general_knowledge
 from quern.provenance import Quantity
 from quern.tree import Node
@@ -328,8 +329,15 @@ def cutting_service() -> Node:
                 links={"per": [f"{VISIT}/narrowest-cut", f"{VISIT}/no-glulam"], "refuses": refuses})
 
 
+# Who stands behind each source (furniture-design's AUTHORITIES).
+AUTHORITY = {
+    "leroy-merlin-sitemap": "maker",
+    "leroy-merlin-store-visit-2026-11-14": "maker",
+}
+
+
 def knowledge() -> list[Node]:
     """The branches to merge beside furniture-design's and wood-panels's: the sitemap and what a
     store's cutting service said, the materials, and the cutting service as a tool."""
-    return [Node(id="sources", kind="", children=[sitemap(), store_visit()]), materials(),
+    return [Node(id="sources", kind="", children=with_authority([sitemap(), store_visit()], AUTHORITY)), materials(),
             Node(id="tools", kind="", children=[cutting_service()])]
