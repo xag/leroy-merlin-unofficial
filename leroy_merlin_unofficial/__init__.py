@@ -165,7 +165,8 @@ def sitemap() -> Node:
         clauses.append(Node(id=f"p-{r['id']}", kind="clause",
                             payload={"locator": f"{r['sitemap']}, the <url> entry of {r['url']} and its "
                                                 "image:title",
-                                     "url": r["url"], "line": r["line"], "cut_to_size": r["cut_to_size"]},
+                                     "url": r["url"], "line": r["line"],
+                                     "sold_cut_to_size_online": r["cut_to_size"]},
                             params=params))
     return Node(id="leroy-merlin-sitemap", kind="source",
                 name="Leroy Merlin France, product sitemap (www.leroymerlin.fr/sitemap-index.xml)",
@@ -181,7 +182,9 @@ def _sold(line: str, t: float | None) -> dict:
     rows = [r for r in _range() if r["line"] == line and r["thickness_mm"] == t]
     return {"products": [f"{SITEMAP}/p-{r['id']}" for r in rows],
             "sheets_mm": sorted({(r["length_mm"], r["width_mm"]) for r in rows if r["length_mm"]}),
-            "cut_to_size": any(r["cut_to_size"] for r in rows)}
+            # the sitemap lists a product of this line sold cut to size on the website ("découpe sur
+            # mesure" in its address); it says nothing of what a store's cutting service will cut
+            "sold_cut_to_size_online": any(r["cut_to_size"] for r in rows)}
 
 
 def _board(boards: list[str], t: float) -> tuple[str, list[Node]] | None:
@@ -292,47 +295,42 @@ VISIT = "sources/leroy-merlin-store-visit-2026-11-14"
 
 
 def store_visit() -> Node:
-    """What a store's cutting service said it does not do, as reported after a visit: no source Leroy
-    Merlin publishes says it (its pages are behind a captcha), so every value is ungrounded."""
+    """What a store's cutting service said, in the words of the customer who reported it after a visit:
+    no source Leroy Merlin publishes says it (its pages are behind a captcha), so every value is ungrounded."""
     return Node(id="leroy-merlin-store-visit-2026-11-14", kind="source",
-                name="Leroy Merlin France, a store's cutting service, as reported after a visit on 14 November 2026",
+                name="Leroy Merlin France, a store's cutting service, as a customer reported it after a visit on "
+                     "14 November 2026",
                 payload={"publisher": "reported by a customer of a Leroy Merlin France store", "year": 2026,
                          "licence": "unstated",
-                         "in_our_words": "one store, by word of mouth; Leroy Merlin publishes no rule of its "
-                                         "cutting service that could be read"},
+                         "in_our_words": "one store, by word of mouth, in the customer's words; Leroy Merlin "
+                                         "publishes no rule of its cutting service that could be read"},
                 children=[
                     Node(id="narrowest-cut", kind="clause",
-                         payload={"locator": "said in the store's cutting service",
+                         payload={"locator": "the customer's words, about the store's cutting service",
                                   "quote": "j'ai appris sur place qu'ils ne pouvaient pas faire une découpe de "
                                            "moins de 10 cm de large"},
                          params={"min_part_width": Quantity(value=100, unit="mm", provenance="reported",
                                                             grounded=False, note="10 cm")}),
-                    Node(id="no-glulam", kind="clause",
-                         payload={"locator": "noted on the day of the visit",
-                                  "quote": "Le magasin ne découpe pas le lamellé-collé"}),
                 ])
 
 
 def cutting_service() -> Node:
-    """Leroy Merlin's cutting service as a tool a part links sawn_with: the narrowest part it cuts and
-    the boards it does not cut (every lamellé-collé line), as reported; it states no cut and no depth,
-    which no source gives."""
-    refuses = [f"materials/{m.id}" for m in materials().children
-               if (m.payload or {}).get("leroy_merlin", {}).get("line", "").startswith("lamelle-colle")]
+    """Leroy Merlin's cutting service as a tool a part links sawn_with: the narrowest part it cuts, as a
+    customer reported; it states no cut and no depth, which no source gives."""
     return Node(id="leroy-merlin-cutting-service", kind="tool", name="Leroy Merlin's cutting service",
                 payload={"maker": "Leroy Merlin France", "saw_kind": "panel saw",
                          "does": "cuts the panels the store sells to the customer's sizes, in straight cuts",
-                         "unverified": "reported from one store's cutting service, not published by Leroy Merlin"},
+                         "unverified": "reported by a customer of one store, not published by Leroy Merlin"},
                 params={"min_part_width": Quantity(value=100, unit="mm", provenance="reported", grounded=False,
                                                    derived_from=[f"{VISIT}/narrowest-cut/min_part_width"],
-                                                   note="as reported after a visit")},
-                links={"per": [f"{VISIT}/narrowest-cut", f"{VISIT}/no-glulam"], "refuses": refuses})
+                                                   note="as a customer reported after a visit")},
+                links={"per": [f"{VISIT}/narrowest-cut"]})
 
 
 # Who stands behind each source (furniture-design's AUTHORITIES).
 AUTHORITY = {
     "leroy-merlin-sitemap": "maker",
-    "leroy-merlin-store-visit-2026-11-14": "maker",
+    "leroy-merlin-store-visit-2026-11-14": "reported",
 }
 
 
@@ -355,8 +353,7 @@ def guidance() -> Node:
             and the shop's reference.""", "materials/standers-u-pvc-transparent-12x12x1"),
         _say("leroy-merlin-cutting-service", "A part cut at Leroy Merlin", """
             A part the person has cut at Leroy Merlin links sawn_with tools/leroy-merlin-cutting-service: it
-            states, as a store said, the narrowest part it cuts and the materials it refuses, and rules refuse
-            a part it would turn away. Nothing gives the width of its cut: ask the person to ask the store, or
+            states, as a customer reported, the narrowest part it cuts, and rules refuse a part narrower. Nothing gives the width of its cut: ask the person to ask the store, or
             to measure a cut it made, and state it on a tool of the piece's own.""",
             "tools/leroy-merlin-cutting-service"),
     ])

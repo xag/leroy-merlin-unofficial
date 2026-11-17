@@ -133,20 +133,21 @@ def _verdicts(tree: Quern) -> dict[str, str]:
     return {r.rule: r.verdict for r in run_rules(tree, "pieces/bench") if r.node == "pieces/bench/rail"}
 
 
-def test_the_cutting_service_cuts_nothing_under_10_cm_and_no_glulam_as_reported():
+def test_the_cutting_service_cuts_nothing_under_10_cm_as_a_customer_reported_and_refuses_no_board():
     tools = next(b for b in knowledge() if b.id == "tools").children
     (service,) = tools
     q = service.params["min_part_width"]
     assert (q.value, q.grounded, q.provenance) == (100, False, "reported")
-    refused = set(service.links["refuses"])
-    assert refused and all("lamelle-colle" in m for m in refused)
-    assert "materials/lm-lamelle-colle-sapin-18" in refused
+    assert "refuses" not in service.links
+    visit = next(s for s in next(b for b in knowledge() if b.id == "sources").children
+                 if s.id == "leroy-merlin-store-visit-2026-11-14")
+    assert visit.payload["authority"] == "reported" and all(c.payload.get("quote") for c in visit.children)
     narrow, material = "a-part-is-no-narrower-than-its-saw-cuts", "a-part-is-cut-by-a-saw-that-cuts-its-material"
     v = _verdicts(_bench_rail("materials/lm-mdf-18", 75))
     assert (v[narrow], v[material]) == ("broken", "holds")
     v = _verdicts(_bench_rail("materials/lm-mdf-18", 250))
     assert (v[narrow], v[material]) == ("holds", "holds")
     v = _verdicts(_bench_rail("materials/lm-lamelle-colle-sapin-18", 250))
-    assert v[material] == "broken"
+    assert v[material] == "holds"
     # no source gives the service's cut: a part sent to it is refused until one is stated
     assert v["a-part-is-sawn-with-a-saw-that-states-its-cut"] == "broken"

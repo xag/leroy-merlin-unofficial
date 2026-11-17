@@ -17,13 +17,17 @@ packages = ["leroy_merlin_unofficial"]
 [dependency-groups]
 dev = ["pytest>=8.0.0", "testplan"]
 
+[tool.uv]
+# wood-panels still pins an earlier furniture-design and quern; these are the ones this package is judged by.
+override-dependencies = ["furniture-design @ git+https://github.com/xag/furniture-design@3e6e331ea828f2456bbfb0b24f6cad11ab19c3ff", "quern @ git+https://github.com/xag/quern@94ca5cf5f58b2b0b090cd4c93a44c906a5511e7d"]
+
 [tool.uv.sources]
 testplan = { git = "https://github.com/xag/testplan", rev = "fe886041c5c20d03d6b8f07137836572e0155e03" }
 # Pinned by full rev, always, and to the same quern as furniture-design: uv accepts one URL
 # per distribution across a resolution.
-quern = { git = "https://github.com/xag/quern", rev = "07eff6efc0625ee0613a083095db4e6b75be7284" }
-furniture-design = { git = "https://github.com/xag/furniture-design", rev = "61d58cce1709a1573098f49232c25748f229d374" }
-wood-panels = { git = "https://github.com/xag/wood-panels", rev = "ce24adfd79bd2e14ed799a80f8d6bfcbb19677d8" }
+quern = { git = "https://github.com/xag/quern", rev = "94ca5cf5f58b2b0b090cd4c93a44c906a5511e7d" }
+furniture-design = { git = "https://github.com/xag/furniture-design", rev = "3e6e331ea828f2456bbfb0b24f6cad11ab19c3ff" }
+wood-panels = { git = "https://github.com/xag/wood-panels", rev = "47a97f6886aebbd312c5d09dc21e1caebd8b4ad8" }
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

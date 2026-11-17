@@ -120,6 +120,21 @@
     "digest": "8f538886fe7f"
   },
   {
+    "path": "the-cutting-service-is-what-a-customer-reported",
+    "kind": "decision",
+    "digest": "04a9c3742e34"
+  },
+  {
+    "path": "the-cutting-service-is-what-a-customer-reported/drop-cut-to-size",
+    "kind": "alternative",
+    "digest": "5e10cf000ae7"
+  },
+  {
+    "path": "the-cutting-service-is-what-a-customer-reported/keep-the-clause-ungrounded",
+    "kind": "alternative",
+    "digest": "6741ce8edc79"
+  },
+  {
     "path": "the-knowledge-is-shared-unchanged-and-improved-only-here",
     "kind": "decision",
     "digest": "0e6ec2eea4a7"

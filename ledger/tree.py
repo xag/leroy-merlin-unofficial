@@ -323,6 +323,40 @@ def entries() -> list[Node]:
                      "No title or source read here prints one; a value with no source is not stated."),
             ],
         ),
+        Node(
+            id="the-cutting-service-is-what-a-customer-reported", kind="decision",
+            name="Leroy Merlin's cutting service is tools/leroy-merlin-cutting-service, a tool a part links sawn_with: it "
+                 "cuts nothing narrower than 100 mm, as a customer reported in their own words "
+                 "(sources/leroy-merlin-store-visit-2026-11-14/narrowest-cut, authority reported, ungrounded). It "
+                 "refuses no board: nobody reported one it would not cut. It states no cut and no depth, which nothing "
+                 "read gives, so furniture-design's rule refuses a part sent to it until the width of its cut is "
+                 "stated. Whether the sitemap lists a line sold cut to size on the website is "
+                 "sold_cut_to_size_online, and says nothing of what a store's service cuts",
+            payload={"decided_on": "2026-11-17",
+                     "the_owner": "La clause sources/leroy-merlin-store-visit-2026-11-14/no-glulam (« Le magasin ne "
+                                  "découpe pas le lamellé-collé ») est fausse. Le client cité comme source dit que la "
+                                  "découpe de Leroy Merlin n'a jamais refusé le lamellé-collé. [...] Il faudrait retirer "
+                                  "la clause et la liste refuses. (report RHpHHBtPdPKORKn3kPGI) / materials/lm-lamelle-"
+                                  "colle-* porte cut_to_size: false sans source ni sens précis (catalogue en ligne ? "
+                                  "magasin ?). Un modèle l'a lu comme une règle du magasin. [...] Retirer no-glulam et "
+                                  "la liste refuses de tools/leroy-merlin-cutting-service, et revoir cut_to_size. "
+                                  "(report YpKoBk2o4SwgpMAklcus)",
+                     "why": "The glulam clause was a model's reading of cut_to_size: false, written as the customer's "
+                            "words; the customer's own words (the decision it supersedes quotes them) say only that "
+                            "the service cuts nothing under 10 cm, and the service did cut a glulam rail of the shoe "
+                            "bench. The refusal broke a-part-is-cut-by-a-saw-that-cuts-its-material on every glulam "
+                            "part sent to the service.",
+                     "falsified_by": "Leroy Merlin's published conditions of its cutting service, or a store cutting a "
+                                     "strip under 100 mm"},
+            links={"supersedes": ["the-cutting-service-is-a-tool-with-what-a-store-said"],
+                   "rests_on": ["the-range-is-read-from-the-public-sitemap"]},
+            children=[
+                _alt("keep-the-clause-ungrounded", "Keep the glulam refusal, ungrounded",
+                     "Ungrounded or not, the rule refuses on it, and nobody said it."),
+                _alt("drop-cut-to-size", "Drop cut to size from the materials",
+                     "It is read from the sitemap and true of the website; its name now says that."),
+            ],
+        ),
     ]
 
 
