@@ -291,48 +291,17 @@ def materials() -> Node:
     return Node(id="materials", kind="", children=out)
 
 
-VISIT = "sources/leroy-merlin-store-visit-2026-11-14"
-
-
-def store_visit() -> Node:
-    """What a store's cutting service said, in the words of the customer who reported it after a visit:
-    no source Leroy Merlin publishes says it (its pages are behind a captcha), so every value is ungrounded."""
-    return Node(id="leroy-merlin-store-visit-2026-11-14", kind="source",
-                name="Leroy Merlin France, a store's cutting service, as a customer reported it after a visit on "
-                     "14 November 2026",
-                payload={"publisher": "reported by a customer of a Leroy Merlin France store", "year": 2026,
-                         "licence": "unstated",
-                         # the customer's message, kept privately (furniture_design.reported)
-                         "sha256": "2a7b26ae636ad72b0dbf08ba2b53120ec9da9b8c72f78547fea06d23923e28a2",
-                         "in_our_words": "one store, by word of mouth, in the customer's words; Leroy Merlin "
-                                         "publishes no rule of its cutting service that could be read"},
-                children=[
-                    Node(id="narrowest-cut", kind="clause",
-                         payload={"locator": "the customer's message of 14 November 2026, 11:05 UTC",
-                                  "quote": "j'ai appris sur place qu'ils ne pouvaient pas faire une découpe de "
-                                           "moins de 10 cm de large"},
-                         params={"min_part_width": Quantity(value=100, unit="mm", provenance="reported",
-                                                            grounded=False, note="10 cm")}),
-                ])
-
-
 def cutting_service() -> Node:
-    """Leroy Merlin's cutting service as a tool a part links sawn_with: the narrowest part it cuts, as a
-    customer reported; it states no cut and no depth, which no source gives."""
+    """Leroy Merlin's cutting service as a tool a part links sawn_with. No source Leroy Merlin publishes
+    states what it cuts, so it states no figure."""
     return Node(id="leroy-merlin-cutting-service", kind="tool", name="Leroy Merlin's cutting service",
                 payload={"maker": "Leroy Merlin France", "saw_kind": "panel saw",
-                         "does": "cuts the panels the store sells to the customer's sizes, in straight cuts",
-                         "unverified": "reported by a customer of one store, not published by Leroy Merlin"},
-                params={"min_part_width": Quantity(value=100, unit="mm", provenance="reported", grounded=False,
-                                                   derived_from=[f"{VISIT}/narrowest-cut/min_part_width"],
-                                                   note="as a customer reported after a visit")},
-                links={"per": [f"{VISIT}/narrowest-cut"]})
+                         "does": "cuts the panels the store sells to the customer's sizes, in straight cuts"})
 
 
 # Who stands behind each source (furniture-design's AUTHORITIES).
 AUTHORITY = {
     "leroy-merlin-sitemap": "maker",
-    "leroy-merlin-store-visit-2026-11-14": "reported",
 }
 
 
@@ -354,8 +323,8 @@ def guidance() -> Node:
             the clear U of that section), their params the section's sizes and their payload the lengths sold
             and the shop's reference.""", "materials/standers-u-pvc-transparent-12x12x1"),
         _say("leroy-merlin-cutting-service", "A part cut at Leroy Merlin", """
-            A part the person has cut at Leroy Merlin links sawn_with tools/leroy-merlin-cutting-service: it
-            states, as a customer reported, the narrowest part it cuts, and rules refuse a part narrower. Nothing gives the width of its cut: ask the person to ask the store, or
+            A part the person has cut at Leroy Merlin links sawn_with tools/leroy-merlin-cutting-service. Nothing
+            gives what it cuts: ask the person to ask the store, or
             to measure a cut it made, and state it on a tool of the piece's own.""",
             "tools/leroy-merlin-cutting-service"),
     ])
@@ -368,5 +337,5 @@ def knowledge() -> list[Node]:
     from leroy_merlin_unofficial import profiles
     panels = materials()
     panels.children += profiles.materials()
-    return [Node(id="sources", kind="", children=with_authority([sitemap(), store_visit()], AUTHORITY) + [profiles.source()]),
+    return [Node(id="sources", kind="", children=with_authority([sitemap()], AUTHORITY) + [profiles.source()]),
             panels, Node(id="tools", kind="", children=[cutting_service()]), guidance()]
