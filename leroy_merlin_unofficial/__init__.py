@@ -302,11 +302,13 @@ def store_visit() -> Node:
                      "14 November 2026",
                 payload={"publisher": "reported by a customer of a Leroy Merlin France store", "year": 2026,
                          "licence": "unstated",
+                         # the customer's message, kept privately (furniture_design.reported)
+                         "sha256": "2a7b26ae636ad72b0dbf08ba2b53120ec9da9b8c72f78547fea06d23923e28a2",
                          "in_our_words": "one store, by word of mouth, in the customer's words; Leroy Merlin "
                                          "publishes no rule of its cutting service that could be read"},
                 children=[
                     Node(id="narrowest-cut", kind="clause",
-                         payload={"locator": "the customer's words, about the store's cutting service",
+                         payload={"locator": "the customer's message of 14 November 2026, 11:05 UTC",
                                   "quote": "j'ai appris sur place qu'ils ne pouvaient pas faire une découpe de "
                                            "moins de 10 cm de large"},
                          params={"min_part_width": Quantity(value=100, unit="mm", provenance="reported",

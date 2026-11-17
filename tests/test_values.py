@@ -151,3 +151,18 @@ def test_the_cutting_service_cuts_nothing_under_10_cm_as_a_customer_reported_and
     assert v[material] == "holds"
     # no source gives the service's cut: a part sent to it is refused until one is stated
     assert v["a-part-is-sawn-with-a-saw-that-states-its-cut"] == "broken"
+
+
+def test_what_the_customer_reported_is_in_their_message():
+    """The store visit quotes the customer's message, kept privately beside xag/furniture's other copies
+    and compared with the session's transcript where it is at hand (furniture_design.reported)."""
+    import os
+    from pathlib import Path
+
+    from furniture_design.reported import check
+    root = Path(__file__).resolve().parents[1]
+    copies = Path(os.environ.get("FURNITURE_SOURCES", root.parent / "furniture" / "sources"))
+    assert copies.is_dir(), f"the private copies are not at {copies}"
+    visit = next(s for s in next(b for b in knowledge() if b.id == "sources").children
+                 if s.id == "leroy-merlin-store-visit-2026-11-14")
+    assert check(visit, copies, Path.home() / ".claude" / "projects") == []

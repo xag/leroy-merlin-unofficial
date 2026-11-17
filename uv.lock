@@ -4,7 +4,7 @@ requires-python = ">=3.12"
 
 [manifest]
 overrides = [
-    { name = "furniture-design", git = "https://github.com/xag/furniture-design?rev=3e6e331ea828f2456bbfb0b24f6cad11ab19c3ff" },
+    { name = "furniture-design", git = "https://github.com/xag/furniture-design?rev=2729275de0416a011a8fd883b633cb485ed17fe7" },
     { name = "quern", git = "https://github.com/xag/quern?rev=94ca5cf5f58b2b0b090cd4c93a44c906a5511e7d" },
 ]
 
@@ -180,7 +180,7 @@ wheels = [
 [[package]]
 name = "furniture-design"
 version = "0.1.0"
-source = { git = "https://github.com/xag/furniture-design?rev=3e6e331ea828f2456bbfb0b24f6cad11ab19c3ff#3e6e331ea828f2456bbfb0b24f6cad11ab19c3ff" }
+source = { git = "https://github.com/xag/furniture-design?rev=2729275de0416a011a8fd883b633cb485ed17fe7#2729275de0416a011a8fd883b633cb485ed17fe7" }
 dependencies = [
     { name = "numpy" },
     { name = "pillow" },
@@ -217,7 +217,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "furniture-design", git = "https://github.com/xag/furniture-design?rev=3e6e331ea828f2456bbfb0b24f6cad11ab19c3ff" },
+    { name = "furniture-design", git = "https://github.com/xag/furniture-design?rev=2729275de0416a011a8fd883b633cb485ed17fe7" },
     { name = "quern", git = "https://github.com/xag/quern?rev=94ca5cf5f58b2b0b090cd4c93a44c906a5511e7d" },
     { name = "wood-panels", git = "https://github.com/xag/wood-panels?rev=47a97f6886aebbd312c5d09dc21e1caebd8b4ad8" },
 ]
