@@ -275,30 +275,6 @@ def entries() -> list[Node]:
             ],
         ),
         Node(
-            id="the-cutting-service-is-a-tool-with-what-a-store-said", kind="decision",
-            name="Leroy Merlin's cutting service is tools/leroy-merlin-cutting-service, a tool a part links sawn_with: it "
-                 "cuts nothing narrower than 100 mm and refuses every lamellé-collé line, as one store said, both "
-                 "ungrounded (provenance reported) under sources/leroy-merlin-store-visit-2026-11-14. It states no "
-                 "cut and no depth, which nothing read gives, so furniture-design's rule refuses a part sent to it "
-                 "until the width of its cut is stated",
-            payload={"decided_on": "2026-11-14",
-                     "the_owner": "Ça peut valoir le coup aussi de modéliser les règles de découpe dans le pack Leroy "
-                                  "Merlin unofficial. Par exemple j'ai appris sur place qu'ils ne pouvaient pas faire "
-                                  "une découpe de moins de 10 cm de large.",
-                     "why": "The service's rules decide whether a part can be cut there at all, and Leroy Merlin's "
-                            "pages, where it may publish them, are behind a captcha. What a store says is the only "
-                            "source, so it is recorded as said, by whom and when, and marked unverified.",
-                     "falsified_by": "Leroy Merlin's published conditions of its cutting service, or another store "
-                                     "cutting a strip under 100 mm or a lamellé-collé board"},
-            links={"rests_on": ["the-range-is-read-from-the-public-sitemap"]},
-            children=[
-                _alt("leave-it-out-until-published", "Model nothing until Leroy Merlin publishes its rules",
-                     "The cutting sheet would send a 75 mm rail to a service that turns it away."),
-                _alt("in-the-piece", "Write the store's rules in the piece that is cut there",
-                     "Every piece cut at Leroy Merlin would repeat them; they are the shop's, not the piece's."),
-            ],
-        ),
-        Node(
             id="a-standers-profile-is-a-material-of-its-section", kind="decision",
             name="Leroy Merlin's own STANDERS profiles (aluminium and PVC U, double U, T, H, angles) are read from the "
                  "sitemap titles as the panels are: a title that states H, l, Ep and L is a product, one clause each; "
@@ -321,40 +297,6 @@ def entries() -> list[Node]:
                      "The cutting sheet reads an lm- material's sheet sizes, which a profile has not."),
                 _alt("a-density-for-aluminium-and-pvc", "Give aluminium and PVC a density so a part of them weighs",
                      "No title or source read here prints one; a value with no source is not stated."),
-            ],
-        ),
-        Node(
-            id="the-cutting-service-is-what-a-customer-reported", kind="decision",
-            name="Leroy Merlin's cutting service is tools/leroy-merlin-cutting-service, a tool a part links sawn_with: it "
-                 "cuts nothing narrower than 100 mm, as a customer reported in their own words "
-                 "(sources/leroy-merlin-store-visit-2026-11-14/narrowest-cut, authority reported, ungrounded). It "
-                 "refuses no board: nobody reported one it would not cut. It states no cut and no depth, which nothing "
-                 "read gives, so furniture-design's rule refuses a part sent to it until the width of its cut is "
-                 "stated. Whether the sitemap lists a line sold cut to size on the website is "
-                 "sold_cut_to_size_online, and says nothing of what a store's service cuts",
-            payload={"decided_on": "2026-11-17",
-                     "the_owner": "La clause sources/leroy-merlin-store-visit-2026-11-14/no-glulam (« Le magasin ne "
-                                  "découpe pas le lamellé-collé ») est fausse. Le client cité comme source dit que la "
-                                  "découpe de Leroy Merlin n'a jamais refusé le lamellé-collé. [...] Il faudrait retirer "
-                                  "la clause et la liste refuses. (report RHpHHBtPdPKORKn3kPGI) / materials/lm-lamelle-"
-                                  "colle-* porte cut_to_size: false sans source ni sens précis (catalogue en ligne ? "
-                                  "magasin ?). Un modèle l'a lu comme une règle du magasin. [...] Retirer no-glulam et "
-                                  "la liste refuses de tools/leroy-merlin-cutting-service, et revoir cut_to_size. "
-                                  "(report YpKoBk2o4SwgpMAklcus)",
-                     "why": "The glulam clause was a model's reading of cut_to_size: false, written as the customer's "
-                            "words; the customer's own words (the decision it supersedes quotes them) say only that "
-                            "the service cuts nothing under 10 cm, and the service did cut a glulam rail of the shoe "
-                            "bench. The refusal broke a-part-is-cut-by-a-saw-that-cuts-its-material on every glulam "
-                            "part sent to the service.",
-                     "falsified_by": "Leroy Merlin's published conditions of its cutting service, or a store cutting a "
-                                     "strip under 100 mm"},
-            links={"supersedes": ["the-cutting-service-is-a-tool-with-what-a-store-said"],
-                   "rests_on": ["the-range-is-read-from-the-public-sitemap"]},
-            children=[
-                _alt("keep-the-clause-ungrounded", "Keep the glulam refusal, ungrounded",
-                     "Ungrounded or not, the rule refuses on it, and nobody said it."),
-                _alt("drop-cut-to-size", "Drop cut to size from the materials",
-                     "It is read from the sitemap and true of the website; its name now says that."),
             ],
         ),
     ]

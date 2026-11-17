@@ -1,222 +1,192 @@
 [
-  {
-    "path": "a-line-naming-no-species-takes-the-weaker-stand-in",
-    "kind": "decision",
-    "digest": "06a281ec05be"
-  },
-  {
-    "path": "a-line-naming-no-species-takes-the-weaker-stand-in/leave-them-without-values",
-    "kind": "alternative",
-    "digest": "64609852b20f"
-  },
-  {
-    "path": "a-line-naming-no-species-takes-the-weaker-stand-in/okoume-for-plain-plywood",
-    "kind": "alternative",
-    "digest": "75c8aa94838d"
-  },
-  {
-    "path": "a-line-takes-its-classs-values-or-a-makers",
-    "kind": "decision",
-    "digest": "b67e56213391"
-  },
-  {
-    "path": "a-line-takes-its-classs-values-or-a-makers/maker-values-for-classed-boards",
-    "kind": "alternative",
-    "digest": "a3ce112da8e0"
-  },
-  {
-    "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded",
-    "kind": "decision",
-    "digest": "a5cabe01355c"
-  },
-  {
-    "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded/grounded-proxies",
-    "kind": "alternative",
-    "digest": "dd721cb304a2"
-  },
-  {
-    "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded/no-values-for-unbranded",
-    "kind": "alternative",
-    "digest": "702b3456efb0"
-  },
-  {
-    "path": "a-material-is-one-line-in-one-thickness",
-    "kind": "decision",
-    "digest": "9e413b740240"
-  },
-  {
-    "path": "a-material-is-one-line-in-one-thickness/one-material-per-line",
-    "kind": "alternative",
-    "digest": "a355824339e6"
-  },
-  {
-    "path": "a-standers-profile-is-a-material-of-its-section",
-    "kind": "decision",
-    "digest": "e0b371ed3be5"
-  },
-  {
-    "path": "a-standers-profile-is-a-material-of-its-section/a-density-for-aluminium-and-pvc",
-    "kind": "alternative",
-    "digest": "a81e53accdfd"
-  },
-  {
-    "path": "a-standers-profile-is-a-material-of-its-section/lm-prefix",
-    "kind": "alternative",
-    "digest": "522be32018d6"
-  },
-  {
-    "path": "a-standers-profile-is-a-material-of-its-section/the-owners-profiles-only",
-    "kind": "alternative",
-    "digest": "5c4a83a234a0"
-  },
-  {
-    "path": "lines-still-without-values",
-    "kind": "debt",
-    "digest": "cd8e7a49b45c"
-  },
-  {
-    "path": "lines-still-without-values/find-these-boards",
-    "kind": "discharge",
-    "digest": "48f8b4e6a0a3"
-  },
-  {
-    "path": "lines-without-values",
-    "kind": "debt",
-    "digest": "521ea1b084f7"
-  },
-  {
-    "path": "lines-without-values/find-what-each-line-is",
-    "kind": "discharge",
-    "digest": "48f8b4e6a0a3"
-  },
-  {
-    "path": "lines-without-values/tombstone-a-true-modulus-without-its-shear",
-    "kind": "tombstone",
-    "digest": "20bf022daf26"
-  },
-  {
-    "path": "lines-without-values/tombstone-lines-with-no-values",
-    "kind": "tombstone",
-    "digest": "f1b8743722bd"
-  },
-  {
-    "path": "lines-without-values/tombstone-thebaults-sheets",
-    "kind": "tombstone",
-    "digest": "8cb68a7607ef"
-  },
-  {
-    "path": "the-cutting-service-is-a-tool-with-what-a-store-said",
-    "kind": "decision",
-    "digest": "f46e2400d682"
-  },
-  {
-    "path": "the-cutting-service-is-a-tool-with-what-a-store-said/in-the-piece",
-    "kind": "alternative",
-    "digest": "7bc22e97cee6"
-  },
-  {
-    "path": "the-cutting-service-is-a-tool-with-what-a-store-said/leave-it-out-until-published",
-    "kind": "alternative",
-    "digest": "8f538886fe7f"
-  },
-  {
-    "path": "the-cutting-service-is-what-a-customer-reported",
-    "kind": "decision",
-    "digest": "04a9c3742e34"
-  },
-  {
-    "path": "the-cutting-service-is-what-a-customer-reported/drop-cut-to-size",
-    "kind": "alternative",
-    "digest": "5e10cf000ae7"
-  },
-  {
-    "path": "the-cutting-service-is-what-a-customer-reported/keep-the-clause-ungrounded",
-    "kind": "alternative",
-    "digest": "6741ce8edc79"
-  },
-  {
-    "path": "the-knowledge-is-shared-unchanged-and-improved-only-here",
-    "kind": "decision",
-    "digest": "0e6ec2eea4a7"
-  },
-  {
-    "path": "the-knowledge-is-shared-unchanged-and-improved-only-here/another-licence",
-    "kind": "alternative",
-    "digest": "1599d11cb8c3"
-  },
-  {
-    "path": "the-panels-are-data-on-furniture-designs-kinds",
-    "kind": "decision",
-    "digest": "0b17be071606"
-  },
-  {
-    "path": "the-panels-are-data-on-furniture-designs-kinds/in-furniture-design",
-    "kind": "alternative",
-    "digest": "cdbb71d927d5"
-  },
-  {
-    "path": "the-panels-are-data-on-furniture-designs-kinds/in-the-app",
-    "kind": "alternative",
-    "digest": "885d8f6bb1ab"
-  },
-  {
-    "path": "the-range-is-checked-against-the-sitemap-as-fetched",
-    "kind": "decision",
-    "digest": "e8f18c1fd99b"
-  },
-  {
-    "path": "the-range-is-checked-against-the-sitemap-as-fetched/skip-without-the-copy",
-    "kind": "alternative",
-    "digest": "a05f36c6d4e6"
-  },
-  {
-    "path": "the-range-is-data-on-wood-panels-boards",
-    "kind": "decision",
-    "digest": "b0df928cd0ea"
-  },
-  {
-    "path": "the-range-is-data-on-wood-panels-boards/makers-here",
-    "kind": "alternative",
-    "digest": "3177aada9f3b"
-  },
-  {
-    "path": "the-range-is-read-from-the-public-sitemap",
-    "kind": "decision",
-    "digest": "0306765b7335"
-  },
-  {
-    "path": "the-range-is-read-from-the-public-sitemap/search-snippets",
-    "kind": "alternative",
-    "digest": "e90eea932c30"
-  },
-  {
-    "path": "the-range-is-read-from-the-public-sitemap/solve-the-captcha",
-    "kind": "alternative",
-    "digest": "41ba5a7f3019"
-  },
-  {
-    "path": "the-values-are-checked-against-a-private-copy",
-    "kind": "decision",
-    "digest": "4a8a840878a0"
-  },
-  {
-    "path": "the-values-are-checked-against-a-private-copy/skip-without-the-copy",
-    "kind": "alternative",
-    "digest": "a05f36c6d4e6"
-  },
-  {
-    "path": "what-the-unbranded-lines-are",
-    "kind": "debt",
-    "digest": "10e6e5f8a52a"
-  },
-  {
-    "path": "what-the-unbranded-lines-are/read-the-label-in-the-store",
-    "kind": "discharge",
-    "digest": "6a22888abb56"
-  },
-  {
-    "path": "what-the-unbranded-lines-are/tombstone-the-makers-of-the-unbranded-lines",
-    "kind": "tombstone",
-    "digest": "c67213cf5751"
-  }
+ {
+  "path": "a-line-naming-no-species-takes-the-weaker-stand-in",
+  "kind": "decision",
+  "digest": "06a281ec05be"
+ },
+ {
+  "path": "a-line-naming-no-species-takes-the-weaker-stand-in/leave-them-without-values",
+  "kind": "alternative",
+  "digest": "64609852b20f"
+ },
+ {
+  "path": "a-line-naming-no-species-takes-the-weaker-stand-in/okoume-for-plain-plywood",
+  "kind": "alternative",
+  "digest": "75c8aa94838d"
+ },
+ {
+  "path": "a-line-takes-its-classs-values-or-a-makers",
+  "kind": "decision",
+  "digest": "b67e56213391"
+ },
+ {
+  "path": "a-line-takes-its-classs-values-or-a-makers/maker-values-for-classed-boards",
+  "kind": "alternative",
+  "digest": "a3ce112da8e0"
+ },
+ {
+  "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded",
+  "kind": "decision",
+  "digest": "a5cabe01355c"
+ },
+ {
+  "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded/grounded-proxies",
+  "kind": "alternative",
+  "digest": "dd721cb304a2"
+ },
+ {
+  "path": "a-line-whose-maker-is-unnamed-borrows-a-makers-values-ungrounded/no-values-for-unbranded",
+  "kind": "alternative",
+  "digest": "702b3456efb0"
+ },
+ {
+  "path": "a-material-is-one-line-in-one-thickness",
+  "kind": "decision",
+  "digest": "9e413b740240"
+ },
+ {
+  "path": "a-material-is-one-line-in-one-thickness/one-material-per-line",
+  "kind": "alternative",
+  "digest": "a355824339e6"
+ },
+ {
+  "path": "a-standers-profile-is-a-material-of-its-section",
+  "kind": "decision",
+  "digest": "e0b371ed3be5"
+ },
+ {
+  "path": "a-standers-profile-is-a-material-of-its-section/a-density-for-aluminium-and-pvc",
+  "kind": "alternative",
+  "digest": "a81e53accdfd"
+ },
+ {
+  "path": "a-standers-profile-is-a-material-of-its-section/lm-prefix",
+  "kind": "alternative",
+  "digest": "522be32018d6"
+ },
+ {
+  "path": "a-standers-profile-is-a-material-of-its-section/the-owners-profiles-only",
+  "kind": "alternative",
+  "digest": "5c4a83a234a0"
+ },
+ {
+  "path": "lines-still-without-values",
+  "kind": "debt",
+  "digest": "cd8e7a49b45c"
+ },
+ {
+  "path": "lines-still-without-values/find-these-boards",
+  "kind": "discharge",
+  "digest": "48f8b4e6a0a3"
+ },
+ {
+  "path": "lines-without-values",
+  "kind": "debt",
+  "digest": "521ea1b084f7"
+ },
+ {
+  "path": "lines-without-values/find-what-each-line-is",
+  "kind": "discharge",
+  "digest": "48f8b4e6a0a3"
+ },
+ {
+  "path": "lines-without-values/tombstone-a-true-modulus-without-its-shear",
+  "kind": "tombstone",
+  "digest": "20bf022daf26"
+ },
+ {
+  "path": "lines-without-values/tombstone-lines-with-no-values",
+  "kind": "tombstone",
+  "digest": "f1b8743722bd"
+ },
+ {
+  "path": "lines-without-values/tombstone-thebaults-sheets",
+  "kind": "tombstone",
+  "digest": "8cb68a7607ef"
+ },
+ {
+  "path": "the-knowledge-is-shared-unchanged-and-improved-only-here",
+  "kind": "decision",
+  "digest": "0e6ec2eea4a7"
+ },
+ {
+  "path": "the-knowledge-is-shared-unchanged-and-improved-only-here/another-licence",
+  "kind": "alternative",
+  "digest": "1599d11cb8c3"
+ },
+ {
+  "path": "the-panels-are-data-on-furniture-designs-kinds",
+  "kind": "decision",
+  "digest": "0b17be071606"
+ },
+ {
+  "path": "the-panels-are-data-on-furniture-designs-kinds/in-furniture-design",
+  "kind": "alternative",
+  "digest": "cdbb71d927d5"
+ },
+ {
+  "path": "the-panels-are-data-on-furniture-designs-kinds/in-the-app",
+  "kind": "alternative",
+  "digest": "885d8f6bb1ab"
+ },
+ {
+  "path": "the-range-is-checked-against-the-sitemap-as-fetched",
+  "kind": "decision",
+  "digest": "e8f18c1fd99b"
+ },
+ {
+  "path": "the-range-is-checked-against-the-sitemap-as-fetched/skip-without-the-copy",
+  "kind": "alternative",
+  "digest": "a05f36c6d4e6"
+ },
+ {
+  "path": "the-range-is-data-on-wood-panels-boards",
+  "kind": "decision",
+  "digest": "b0df928cd0ea"
+ },
+ {
+  "path": "the-range-is-data-on-wood-panels-boards/makers-here",
+  "kind": "alternative",
+  "digest": "3177aada9f3b"
+ },
+ {
+  "path": "the-range-is-read-from-the-public-sitemap",
+  "kind": "decision",
+  "digest": "0306765b7335"
+ },
+ {
+  "path": "the-range-is-read-from-the-public-sitemap/search-snippets",
+  "kind": "alternative",
+  "digest": "e90eea932c30"
+ },
+ {
+  "path": "the-range-is-read-from-the-public-sitemap/solve-the-captcha",
+  "kind": "alternative",
+  "digest": "41ba5a7f3019"
+ },
+ {
+  "path": "the-values-are-checked-against-a-private-copy",
+  "kind": "decision",
+  "digest": "4a8a840878a0"
+ },
+ {
+  "path": "the-values-are-checked-against-a-private-copy/skip-without-the-copy",
+  "kind": "alternative",
+  "digest": "a05f36c6d4e6"
+ },
+ {
+  "path": "what-the-unbranded-lines-are",
+  "kind": "debt",
+  "digest": "10e6e5f8a52a"
+ },
+ {
+  "path": "what-the-unbranded-lines-are/read-the-label-in-the-store",
+  "kind": "discharge",
+  "digest": "6a22888abb56"
+ },
+ {
+  "path": "what-the-unbranded-lines-are/tombstone-the-makers-of-the-unbranded-lines",
+  "kind": "tombstone",
+  "digest": "c67213cf5751"
+ }
 ]
